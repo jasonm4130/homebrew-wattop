@@ -11,6 +11,8 @@ wattop
 Requires Apple Silicon and macOS 14 or newer. Hardware readings depend on the
 chip and macOS version; see wattop's documented limitations. The binary is not
 Apple-notarized. GitHub release provenance and SHA256 checksums identify its build.
+The cask removes the quarantine attribute from its installed `wattop` binary
+so macOS can execute this unsigned CLI.
 
 ## Update
 
