@@ -32,7 +32,8 @@ def generate():
         if actual != expected:
             raise ValueError("Release archive checksum mismatch")
         subprocess.run(["gh", "attestation", "verify", str(root / archive), "--repo", REPO,
-                        "--signer-workflow", f"{REPO}/.github/workflows/release.yml"], check=True)
+                        "--signer-workflow", f"{REPO}/.github/workflows/release.yml",
+                        "--source-ref", f"refs/tags/{tag}"], check=True)
     cask = f'''cask "wattop" do
   version "{version}"
   sha256 "{expected}"

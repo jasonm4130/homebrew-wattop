@@ -14,7 +14,7 @@ jobs:
       HOMEBREW_NO_ANALYTICS: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - run: python3 -m py_compile scripts/update.py
+      - run: python3 -m unittest discover -s scripts -v
       - name: Validate cask syntax
         run: |
           if test -f Casks/wattop.rb; then
