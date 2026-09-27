@@ -20,3 +20,18 @@ jobs:
           if test -f Casks/wattop.rb; then
             ruby -c Casks/wattop.rb
           fi
+      - name: Lint cask
+        if: hashFiles('Casks/wattop.rb') != ''
+        run: |
+          brew update --quiet
+          brew style Casks/wattop.rb
+      - name: Install cask from this checkout
+        if: hashFiles('Casks/wattop.rb') != ''
+        run: |
+          brew tap jasonm4130/wattop "$GITHUB_WORKSPACE"
+          brew install --cask jasonm4130/wattop/wattop
+          bin="$(brew --prefix)/bin/wattop"
+          if xattr -p com.apple.quarantine "$bin" 2>/dev/null; then
+            echo "quarantine still set on $bin"; exit 1
+          fi
+          "$bin" --version

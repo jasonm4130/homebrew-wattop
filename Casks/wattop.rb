@@ -13,9 +13,8 @@ cask "wattop" do
   binary "wattop"
 
   # The release is not Apple-notarized. Permit this verified CLI to run.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{staged_path}/wattop"],
-                   must_succeed: true
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "{{staged_path}}/wattop"]
   end
 end
