@@ -1,6 +1,6 @@
 cask "wattop" do
-  version "0.3.0"
-  sha256 "a9068757ea0e8df0218cc916b5f7b92177f9a41fb4a4294d4a6468f98330ac3a"
+  version "0.3.1"
+  sha256 "8174a6797a19b451b331c65409085721f87f042e17706be452fb5dfa3fd855ba"
 
   url "https://github.com/jasonm4130/wattop/releases/download/v#{version}/wattop_#{version}_darwin_arm64.tar.gz"
   name "wattop"
